@@ -3,9 +3,10 @@ This modules defines behaviours for Pi2Go Lite robot
 
 Author: Radek Pribyl
 """
-from pi2golite._helpers import validate_max
 import math
 import time
+
+from pi2golite._helpers import validate_max
 
 class Steering(object):
     """
@@ -95,7 +96,7 @@ class Steering(object):
     def turn_rev_left(self, lf_pct=50):
         lf_speed = float(validate_max(lf_pct)) / 100 * self._curr_speed
         self._go_reverse(lf_speed, self._curr_speed)
-        self._last_action = self.turn_revleft
+        self._last_action = self.turn_rev_left
         self._last_action_arguments = {'lf_pct' : lf_pct}
 
     def turn_rev_right(self, rg_pct=50):
@@ -186,14 +187,13 @@ class StepSteering(object):
         rg_count = 0
         lf_lst_pos = self._whl_sen_lf.activated
         rg_lst_pos = self._whl_sen_rg.activated
-        
         action()
 
         while lf_count < lf_steps or rg_count < rg_steps:
             time.sleep(0.002)
             lf_cur_pos = self._whl_sen_lf.activated
             if lf_cur_pos != lf_lst_pos:
-                lf_count +=1
+                lf_count += 1
                 lf_lst_pos = lf_cur_pos
                 if lf_count >= lf_steps:
                     self._stop_left()
@@ -204,7 +204,6 @@ class StepSteering(object):
                 rg_lst_pos = rg_cur_pos
                 if rg_count >= rg_steps:
                     self._stop_right()
-            
 
         self._steering.stop()
 
