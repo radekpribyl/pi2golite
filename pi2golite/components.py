@@ -222,6 +222,7 @@ class DistanceSensor(object):
                 self._measure_thread = threading.Thread(target=self._distance_measure,
                                                         args=(callback, delay))
                 self.measure_running.set()
+                self._measure_thread.daemon=True
                 self._measure_thread.start()
             else:
                 raise AttributeError()
