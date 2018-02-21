@@ -75,13 +75,13 @@ class Robot(object):
         if self._whl_counters_avail:
             #Prefix step_ is used for step_steering so try it
             if attrname.startswith('step_'):
-                attr = attrname.lstrip('step_')
+                attr = attrname[5:]
                 if attr in (n for n in dir(self.step_steering) if not n.startswith('_')):
                     return getattr(self.step_steering, attr)
 
             #Another allowed prefix is meas_ for meaasure_steering actions
             elif attrname.startswith('meas_'):
-                attr = attrname.lstrip('meas_')
+                attr = attrname[5:]
                 if attr in (n for n in dir(self.measure_steering) if not n.startswith('_')):
                     return getattr(self.measure_steering, attr)
 
