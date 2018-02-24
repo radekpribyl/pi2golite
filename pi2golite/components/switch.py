@@ -11,7 +11,7 @@ try:
 except ImportError:
     import pi2golite.dummyGPIO as GPIO
 
-from .sensor import Sensor
+from pi2golite.components.sensor import Sensor
 
 
 class Switch(Sensor):

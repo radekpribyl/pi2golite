@@ -3,13 +3,13 @@ try:
 except ImportError:
     import pi2golite.dummyGPIO as GPIO
 
-from .motor import Motor
-from .sensor import Sensor
-from .distance_sensor import DistanceSensor
-from .wheel_sensor import WheelSensor
-from .servo import Servo
-from .servos_driver import ServosDriver
-from .switch import Switch
-from .white_led import WhiteLED
+from pi2golite.components.motor import Motor
+from pi2golite.components.sensor import Sensor
+from pi2golite.components.distance_sensor import DistanceSensor
+from pi2golite.components.wheel_sensor import WheelSensor
+from pi2golite.components.servo import Servo
+from pi2golite.components.servos_driver import ServosDriver
+from pi2golite.components.switch import Switch
+from pi2golite.components.white_led import WhiteLED
 
 GPIO.setmode(GPIO.BOARD)

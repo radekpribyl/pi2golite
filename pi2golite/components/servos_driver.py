@@ -6,7 +6,7 @@
     by Gareth Davies and Zachary Igielman
 """
 import os
-from .servo import Servo
+from pi2golite.components.servo import Servo
 
 class ServosDriver(object):
     """
