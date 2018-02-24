@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='pi2golite',
-    version='0.2',
+    version='0.3',
     description='Pi2GoLite control library',
     author='Radek Pribyl',
     classifiers = [
