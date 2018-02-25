@@ -1,4 +1,4 @@
-from pi2golite.common import LEFT, RIGHT, FRONT, REAR
+from pi2golite.common import Position
 class Pi2GoLiteConfig(object):
     """
     Configuration class which provides default configuration
@@ -6,20 +6,20 @@ class Pi2GoLiteConfig(object):
     and pass it to Robot class
     """
     motors = {
-        LEFT : {'fwdpin': 7, 'revpin': 8, 'fwdcorr': 0, 'revcorr': 0},
-        RIGHT : {'fwdpin': 10, 'revpin': 9, 'fwdcorr': 0, 'revcorr': 0}
+        Position.LEFT : {'fwdpin': 7, 'revpin': 8, 'fwdcorr': 0, 'revcorr': 0},
+        Position.RIGHT : {'fwdpin': 10, 'revpin': 9, 'fwdcorr': 0, 'revcorr': 0}
     }
     leds = {
-        FRONT : {'pin': 22},
-        REAR : {'pin': 23}
+        Position.FRONT : {'pin': 22},
+        Position.REAR : {'pin': 23}
     }
     obstacle_sensors = {
-        LEFT : {'pin': 4},
-        RIGHT : {'pin': 17}
+        Position.LEFT : {'pin': 4},
+        Position.RIGHT : {'pin': 17}
     }
     line_sensors = {
-        LEFT : {'pin': 18},
-        RIGHT : {'pin': 27}
+        Position.LEFT : {'pin': 18},
+        Position.RIGHT : {'pin': 27}
     }
     switch = {'pin': 11}
     distance_sensor = {'pin': 14}
@@ -30,3 +30,5 @@ class Pi2GoLiteConfig(object):
               'param': {'panpin': 24, 'tiltpin': 25, 'idletimeout': 2000,
                         'minsteps': 50, 'maxsteps': 250, 'panmaxangle': 180,
                         'tiltmaxangle': 180}}
+    
+    pigpio = {'use' : False, 'host':'localhost', 'port':8888}

@@ -1,7 +1,10 @@
-LEFT = 1
-RIGHT = 2
-FRONT = 3
-REAR = 4
+from enum import Enum
+
+class Position(Enum):
+    LEFT = 1
+    RIGHT = 2
+    FRONT = 3
+    REAR = 4
 
 _PIN_TO_GPIO_REV3 = [-1, -1, -1, 2, -1, 3, -1, 4, 14, -1, 15, 17, 18, 27, -1, 22, 23, -1, 24, 10, -1, 9, 25, 11, 8, -1, 7, -1, -1, 5, -1, 6, 12, 13, -1, 19, 16, 26, 20, -1, 21 ]
 
