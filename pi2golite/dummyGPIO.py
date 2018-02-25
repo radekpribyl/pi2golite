@@ -3,7 +3,8 @@ from random import randrange
 
 OUT = 0
 IN = 1
-BOARD = 0
+BOARD = 10
+BCM = 11
 RISING = 0
 FALLING = 1
 BOTH = 0

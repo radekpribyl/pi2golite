@@ -12,4 +12,4 @@ from pi2golite.components.servos_driver import ServosDriver
 from pi2golite.components.switch import Switch
 from pi2golite.components.white_led import WhiteLED
 
-GPIO.setmode(GPIO.BOARD)
+GPIO.setmode(GPIO.BCM)
