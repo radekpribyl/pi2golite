@@ -1,9 +1,10 @@
 from pi2golite import Pi2GoLiteConfig, Robot
+from pi2golite.common import LEFT, RIGHT
 
 class MalinaConfig(Pi2GoLiteConfig):
     def __init__(self):
-        self.motor_right['fwdcorr'] = 4.5
-        self.motor_left['revcorr'] = 0
+        self.motors[RIGHT]['fwdcorr'] = 4.5
+        self.motors[LEFT]['revcorr'] = 0
         self.wheelsensors['avail'] = True
         self.servos['avail'] = True
         self.servos['param']['maxsteps'] = 238

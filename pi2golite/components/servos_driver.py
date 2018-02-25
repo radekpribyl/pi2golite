@@ -7,6 +7,7 @@
 """
 import os
 from pi2golite.components.servo import Servo
+from pi2golite.common import gpio_to_physical
 
 class ServosDriver(object):
     """
@@ -16,8 +17,8 @@ class ServosDriver(object):
 
     def __init__(self, panpin, tiltpin, idletimeout, minsteps,
                  maxsteps, panmaxangle, tiltmaxangle):
-        self._panpin = panpin
-        self._tiltpin = tiltpin
+        self._panpin = gpio_to_physical(panpin)
+        self._tiltpin = gpio_to_physical(tiltpin)
         self._idletimeout = idletimeout
         self._minsteps = minsteps
         self._maxsteps = maxsteps
