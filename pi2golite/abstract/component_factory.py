@@ -1,4 +1,5 @@
-from abc import ABC, abstractmethod
+import abc
+ABC = abc.ABCMeta('ABC', (object,), {'__slots__': ()}) 
 
 class ComponentFactory(ABC):
     def __init__(self, pi2golite_config):
@@ -53,30 +54,30 @@ class ComponentFactory(ABC):
     def create_servo(self, position):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_motor(self, config):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_led(self, config):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_obstacle_sensor(self, config):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_line_sensor(self, config):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_wheel_sensor(self, line_sensor):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_distance_sensor(self, config):
         pass
 
-    @abstractmethod
+    @abc.abstractmethod
     def _create_switch(self, config):
         pass
