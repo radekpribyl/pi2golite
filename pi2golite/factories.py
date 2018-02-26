@@ -1,13 +1,6 @@
 #This file includes helper methods used by other pi2golite files
 from pi2golite.pigpio.pigpio_factory import PigpioFactory
-from pi2golite.rpigpio.rpigpio_factory import RpigpioFactory
-
-def validate_max(value, maxv=100):
-    if value > maxv:
-        value = maxv
-    elif value < 0:
-        value = 0
-    return value
+from pi2golite.rpigpio import RpigpioFactory
 
 def get_components_factory(config):
     if 'pigpio' in config.__dict__:

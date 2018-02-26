@@ -6,12 +6,6 @@
     by Gareth Davies and Zachary Igielman
 """
 
-try:
-    import RPi.GPIO as GPIO
-except ImportError:
-    import pi2golite.dummyGPIO as GPIO
-
-
 class WheelSensor(object):
     """ The PINs for wheel sensors are shared with line detectors
     and need to be manually switched on the robot. Therefore the WheelSensor

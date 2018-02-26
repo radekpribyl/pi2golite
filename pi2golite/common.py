@@ -18,3 +18,10 @@ def physical_to_gpio(pin_number):
     if pin_number < 0 or pin_number>len(_PIN_TO_GPIO_REV3)-1:
         return -1
     return _PIN_TO_GPIO_REV3[pin_number]
+
+def validate_max(value, maxv=100):
+    if value > maxv:
+        value = maxv
+    elif value < 0:
+        value = 0
+    return value

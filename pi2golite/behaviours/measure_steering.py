@@ -5,7 +5,7 @@ Author: Radek Pribyl
 """
 import math
 
-from pi2golite._helpers import validate_max
+from pi2golite.common import validate_max
 
 class MeasureSteering(object):
     """

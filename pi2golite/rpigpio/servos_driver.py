@@ -6,7 +6,7 @@
     by Gareth Davies and Zachary Igielman
 """
 import os
-from pi2golite.components.servo import Servo
+from pi2golite.rpigpio.servo import Servo
 from pi2golite.common import gpio_to_physical
 
 class ServosDriver(object):

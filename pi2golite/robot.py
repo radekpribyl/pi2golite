@@ -1,7 +1,7 @@
-from pi2golite.components import DistanceSensor, Motor, Sensor, Switch, \
-    WhiteLED, WheelSensor, ServosDriver
 from pi2golite.behaviours import Steering, StepSteering, MeasureSteering, WheelCounter
 from pi2golite.pi2golite_config import Pi2GoLiteConfig
+from pi2golite.factories import get_components_factory
+from pi2golite.common import Position
 
 
 class Robot(object):
@@ -19,40 +19,40 @@ class Robot(object):
         if not isinstance(cfg, Pi2GoLiteConfig) or cfg is None:
             cfg = Pi2GoLiteConfig()
 
+        comp_factory = get_components_factory(cfg)
         # Defining robot's hardware components
         self.components = {}
 
         # Both motor setup
-        motor_left = Motor(**cfg.motor_left)
-        motor_right = Motor(**cfg.motor_right)
+        motor_left = comp_factory.create_motor(Position.LEFT)
+        motor_right = comp_factory.create_motor(Position.RIGHT)
 
         self.components['left_motor'] = motor_left
         self.components['right_motor'] = motor_right
 
         # While LEDs setup
-        self.components['front_led'] = WhiteLED(**cfg.front_led)
-        self.components['rear_led'] = WhiteLED(**cfg.rear_led)
+        self.components['front_led'] = comp_factory.create_led(Position.FRONT)
+        self.components['rear_led'] = comp_factory.create_led(Position.REAR)
 
         # IR sensors
-        self.components['obstacle_left'] = Sensor(**cfg.obstacle_left)
-        self.components['obstacle_right'] = Sensor(**cfg.obstacle_right)
-        self.components['linesensor_left'] = Sensor(**cfg.linesensor_left)
-        self.components['linesensor_right'] = Sensor(**cfg.linesensor_right)
+        self.components['obstacle_left'] = comp_factory.create_obstacle_sensor(Position.LEFT)
+        self.components['obstacle_right'] = comp_factory.create_obstacle_sensor(Position.RIGHT)
+        self.components['linesensor_left'] = comp_factory.create_line_sensor(Position.LEFT)
+        self.components['linesensor_right'] = comp_factory.create_line_sensor(Position.RIGHT)
 
         # Switch
-        self.components['switch'] = Switch(**cfg.switch)
+        self.components['switch'] = comp_factory.create_switch()
 
         # Distance sensor
-        self.components['distance_sensor'] = DistanceSensor(
-            **cfg.distance_sensor)
+        self.components['distance_sensor'] = comp_factory.create_distance_sensor()
 
         # Optional components
         # Aliases for wheel sensors as they have to be switched
         # Pins are the same as for line sensors
         self._whl_counters_avail = cfg.wheelsensors['avail']
         if self._whl_counters_avail:
-            whl_sen_lf = WheelSensor(self.components['linesensor_left'])
-            whl_sen_rg = WheelSensor(self.components['linesensor_right'])
+            whl_sen_lf = comp_factory.create_wheel_sensor(Position.LEFT)
+            whl_sen_rg = comp_factory.create_wheel_sensor(Position.RIGHT)
             self.components['wheelsensor_left'] = whl_sen_lf
             self.components['wheelsensor_right'] = whl_sen_rg
             whl_cntr_lf = WheelCounter(whl_sen_lf)
@@ -61,8 +61,8 @@ class Robot(object):
             self.components['wheelcounter_right'] = whl_cntr_rg
 
         # Servos
-        if cfg.servos['avail']:
-            self.components['servos'] = ServosDriver(**cfg.servos['param'])
+        #if cfg.servos['avail']:
+        #    self.components['servos'] = ServosDriver(**cfg.servos['param'])
 
         # Adding behaviour
         self.steering = Steering(motor_left, motor_right)

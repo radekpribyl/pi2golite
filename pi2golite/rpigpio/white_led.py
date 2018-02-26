@@ -11,7 +11,7 @@ try:
 except ImportError:
     import pi2golite.dummyGPIO as GPIO
 
-from pi2golite._helpers import validate_max
+from pi2golite.common import validate_max
 
 
 class WhiteLED(object):

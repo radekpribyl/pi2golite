@@ -1,0 +1,1 @@
+from pi2golite.abstract.component_factory import ComponentFactory

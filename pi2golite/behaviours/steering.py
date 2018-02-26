@@ -4,7 +4,7 @@ This modules defines behaviours for Pi2Go Lite robot
 Author: Radek Pribyl
 """
 
-from pi2golite._helpers import validate_max
+from pi2golite.common import validate_max
 
 
 class Steering(object):

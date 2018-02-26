@@ -1,30 +1,29 @@
-from pi2golite.abstract.component_factory import ComponentFactory
-
+from pi2golite.abstract import ComponentFactory
+from pi2golite.rpigpio import Motor, Sensor, DistanceSensor, Switch, WheelSensor, WhiteLED
 class RpigpioFactory(ComponentFactory):
     def __init__(self, pi2golite_config):
-        self._config = pi2golite_config
-        self._cache = {}
+        super(RpigpioFactory, self).__init__(pi2golite_config)
 
-    def create_motor(self, position):
-        pass
+    def _create_motor(self, config):
+        return Motor(**config)
 
-    def create_led(self, position):
-        pass
+    def _create_led(self, config):
+        return WhiteLED(**config)
 
-    def create_obstacle_sensor(self, position):
-        pass
+    def _create_obstacle_sensor(self, config):
+        return Sensor(**config)
 
-    def create_line_sensor(self, position):
-        pass
+    def _create_line_sensor(self, config):
+        return Sensor(**config)
 
-    def create_wheel_sensor(self, position):
-        pass
+    def _create_wheel_sensor(self, line_sensor):
+        return WheelSensor(line_sensor)
 
-    def create_distance_sensor(self):
-        pass
+    def _create_distance_sensor(self, config):
+        return DistanceSensor(**config)
 
-    def create_switch(self):
-        pass
+    def _create_switch(self, config):
+        return Switch(**config)
 
     def create_servo(self, position):
         pass

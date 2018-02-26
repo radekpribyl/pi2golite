@@ -7,7 +7,7 @@
 """
 
 import os
-from pi2golite._helpers import validate_max
+from pi2golite.common import validate_max
 
 class Servo(object):
     def __init__(self, pin, min_steps, max_steps, max_angle):
